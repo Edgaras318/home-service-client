@@ -2,7 +2,6 @@
 import BusinessCard from "@/components/BusinessCard/BusinessCard";
 import { businesses } from "@/data/businesses";
 import styles from "./BusinessCardList.module.scss";
-
 const BusinessCardList = ({ category, gridColumns = 4 }) => {
   const filteredBusinesses = category
     ? businesses.filter((business) => business.category === category)
