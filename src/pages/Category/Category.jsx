@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import BusinessCardList from "@/components/BusinessCardList/BusinessCardList";
-import VericalServiceSelection from "@/components/VericalServiceSelection/VericalServiceSelection";
+import VerticalCategoriesSelection from "@/components/VerticalCategoriesSelection/VerticalCategoriesSelection";
 import styles from "./Category.module.scss";
 
 const Category = () => {
@@ -9,7 +9,7 @@ const Category = () => {
   return (
     <div className={styles.container}>
       <div className={styles.leftContainer}>
-        <VericalServiceSelection />
+        <VerticalCategoriesSelection />
       </div>
       <div className={styles.buisnessContainer}>
         <h1 className={styles.title}>{category}</h1>

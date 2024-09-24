@@ -1,7 +1,7 @@
 import CategoryCard from "@/components/CategoryCard/CategoryCard";
 import { FaScrewdriverWrench, FaTruck,FaBrush, FaBucket,FaLightbulb  } from "react-icons/fa6";
 import { PiPipeFill } from "react-icons/pi";
-import styles from './ServiceSection.module.scss';
+import styles from './CategoriesSection.module.scss';
 
 const services = [
   {
@@ -44,12 +44,13 @@ const services = [
 ];
 
 
-const ServiceSection = () => {
+const CategoriesSection = () => {
   return (
     <section>
       <div
         className={styles.service}
       >
+
         {services.map((service) => (
           <CategoryCard
             key={service.id}
@@ -63,4 +64,4 @@ const ServiceSection = () => {
   );
 };
 
-export default ServiceSection;
+export default CategoriesSection;

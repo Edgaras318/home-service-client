@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from "../Button/Button.jsx";
+import Button from "../common/Button/Button.jsx";
 import useLocalStorage from "@/hooks/useLocalStorage"; // Ensure you import your custom hook
 import styles from "./BusinessCard.module.scss";
 

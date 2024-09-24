@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./VericalServiceSelection.module.scss";
+import styles from "./VerticalCategoriesSelection.module.scss";
 import {
   FaScrewdriverWrench,
   FaTruck,
@@ -10,7 +10,7 @@ import {
 import { PiPipeFill } from "react-icons/pi";
 import VerticalCategoryCard from "@/components/VerticalCategoryCard/VerticalCategoryCard";
 
-const VericalServiceSelection = () => {
+const VerticalCategoriesSelection = () => {
   const services = [
     {
       id: 1,
@@ -65,4 +65,4 @@ const VericalServiceSelection = () => {
   );
 };
 
-export default VericalServiceSelection;
+export default VerticalCategoriesSelection;

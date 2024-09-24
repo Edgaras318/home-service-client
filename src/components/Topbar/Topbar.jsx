@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './Topbar.module.scss';
 import logo from '@/assets/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from "@/components/Button/Button";
+import Button from "@/components/common/Button/Button";
 import { useUserStore } from '@/stores/userStore';
 
 const Topbar = () => {
