@@ -1,9 +1,11 @@
+// src/components/Topbar/Topbar.js
 import React, { useState, useEffect } from 'react';
 import styles from './Topbar.module.scss';
 import logo from '@/assets/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from "@/components/common/Button/Button";
 import { useUserStore } from '@/stores/userStore';
+import routes from '@/routes'; // Import the routes configuration
 
 const Topbar = () => {
   const { user, clearUser } = useUserStore();
@@ -11,18 +13,18 @@ const Topbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const navLinks = [
-    { href: '/', label: 'See our services', text: 'Home' },
-    { href: '/services', label: 'See our services', text: 'Services' },
-    { href: '/about', label: 'About us', text: 'About Us' },
+    { href: routes.home, label: 'See our services', text: 'Home' },
+    { href: routes.services, label: 'See our services', text: 'Services' },
+    { href: routes.about, label: 'About us', text: 'About Us' },
   ];
 
   const handleButtonClick = () => {
-    navigate('/login');
+    navigate(routes.login);
   };
 
   const handleLogout = () => {
     clearUser();
-    navigate('/'); // Redirect to home after logout
+    navigate(routes.home); // Redirect to home after logout
     setIsDropdownOpen(false); // Close dropdown on logout
   };
 
@@ -30,7 +32,6 @@ const Topbar = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
-  // Effect to close dropdown when user state changes
   useEffect(() => {
     if (user) {
       setIsDropdownOpen(false); // Close dropdown when user logs in

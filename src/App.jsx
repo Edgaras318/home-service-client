@@ -1,45 +1,49 @@
+// src/App.js
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Services from "./pages/Services";
-import AboutUs from "./pages/AbousUs";
+import AboutUs from "./pages/AboutUs"; // Fix spelling error
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Root from "./Root";
 import Category from "./pages/Category/Category";
 import ErrorPage from "./pages/ErrorPage";
+import routes from './routes'; // Import the routes configuration
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: routes.home,
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: routes.home,
         element: <Home />,
       },
       {
-        path: "/services",
+        path: routes.services,
         element: <Services />,
       },
       {
-        path: "/about",
+        path: routes.about,
         element: <AboutUs />,
       },
       {
-        path: "/login",
+        path: routes.login,
         element: <Login />,
-      },      {
-        path: "/signup",
+      },
+      {
+        path: routes.register,
         element: <Register />,
       },
       {
-        path: "/search/:category",
+        path: routes.category(':category'),
         element: <Category />,
       },
     ],
   },
 ]);
+
 const App = () => {
   return <RouterProvider router={router} />;
 };
