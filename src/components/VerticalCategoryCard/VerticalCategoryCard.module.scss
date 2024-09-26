@@ -18,8 +18,8 @@
   &.active {
     transition: .3s;
     cursor: pointer;
-    color: #9977ef;
-    background-color: #f2eefd;
+    color: $card-color;
+    background-color: $card-background-color;
     text-decoration: none;
     border-color: #beaaf5;
     }

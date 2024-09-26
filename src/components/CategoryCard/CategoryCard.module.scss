@@ -6,10 +6,10 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  background-color: #f2eefd;
+  background-color: $card-background-color;
   border-radius: .5rem;
   border: none;
-  color: #9977ef;
+  color: $card-color;
   font-weight: 500;
 
 
@@ -23,11 +23,11 @@
     cursor: pointer;
     }
   }
-  
+
   .icon {
     color: var(--card-color);
   }
-  
+
   .title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
