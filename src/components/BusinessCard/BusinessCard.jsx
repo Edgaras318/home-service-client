@@ -1,19 +1,8 @@
+// BusinessCard.js
 import Button from "@/components/common/Button/Button";
-import useLocalStorage from "@/hooks/useLocalStorage"; // Ensure you import your custom hook
 import styles from "./BusinessCard.module.scss";
 
-const BusinessCard = ({ business }) => {
-    const [favorites, setFavorites] = useLocalStorage('favorites', []);
-    const isFavorite = favorites.includes(business._id);
-
-    const toggleFavorite = () => {
-        if (isFavorite) {
-            setFavorites(favorites.filter(id => id !== business._id));
-        } else {
-            setFavorites([...favorites, business._id]);
-        }
-    };
-
+const BusinessCard = ({ business, isFavorite, toggleFavorite }) => {
     return (
         <div className={styles.businessCard}>
             <img
@@ -21,7 +10,7 @@ const BusinessCard = ({ business }) => {
                 alt={business.name}
                 className={styles.businessCard__image}
             />
-            <button onClick={toggleFavorite} className={styles.favoriteButton}>
+            <button onClick={() => toggleFavorite(business._id)} className={styles.favoriteButton}>
                 <span className={isFavorite ? styles.favorite : styles.notFavorite}>
                     ♥
                 </span>
