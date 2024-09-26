@@ -6,29 +6,47 @@ import { validateUsername, validatePassword } from "@/utils/validators"; // Move
 import styles from './Login.module.scss';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({ username: '', password: '' });
+  // Combine username and password into a form state
+  const [form, setForm] = useState({ username: '', password: '' });
+  const [errors, setErrors] = useState({});
   const setUser = useUserStore((state) => state.setUser);
   const navigate = useNavigate();
 
+  // Validate form fields
   const validate = () => {
-    const usernameError = validateUsername(username);
-    const passwordError = validatePassword(password);
+    const usernameError = validateUsername(form.username);
+    const passwordError = validatePassword(form.password);
     return { username: usernameError, password: passwordError };
   };
 
+  // Handle change for form fields
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Update form state
+    setForm((prev) => ({ ...prev, [name]: value }));
+
+    // Clear error for the field being changed
+    setErrors((prev) => {
+      if (prev[name]) {
+        return { ...prev, [name]: '' };
+      }
+      return prev;
+    });
+  };
+
+  // Handle form submission
   const handleLogin = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
-    if (validationErrors.username || validationErrors.password) {
+    if (Object.values(validationErrors).some(Boolean)) {
       setErrors(validationErrors);
       return;
     }
 
-    // Simulate an API call
     try {
-      const userData = { username };
+      // Simulate an API call
+      const userData = { username: form.username };
       setUser(userData);
       navigate('/');
     } catch (error) {
@@ -43,22 +61,18 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <InputField
                 label="Username"
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                  setErrors((prev) => ({ ...prev, username: '' }));
-                }}
+                name="username"  // Add the 'name' attribute to map to form state
+                value={form.username}
+                onChange={handleChange}
                 error={errors.username}
                 placeholder="Type your username"
             />
             <InputField
                 label="Password"
+                name="password"  // Add the 'name' attribute to map to form state
                 type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setErrors((prev) => ({ ...prev, password: '' }));
-                }}
+                value={form.password}
+                onChange={handleChange}
                 error={errors.password}
                 placeholder="Type your password"
             />
