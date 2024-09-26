@@ -22,7 +22,14 @@ const RegisterForm = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
-        setErrors((prev) => ({ ...prev, [name]: "" }));
+
+        setErrors((prev) => {
+            if (prev[name]) {
+                // Only update if an error exists for this field
+                return { ...prev, [name]: "" };
+            }
+            return prev; // No error, no need to update state
+        });
     };
 
     const handleRegister = async (e) => {
